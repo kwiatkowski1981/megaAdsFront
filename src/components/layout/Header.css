@@ -20,4 +20,5 @@ header h1 {
 .search input {
     width:12em;
     margin-right: 0.2em;
+    text-align: center;
 }

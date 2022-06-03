@@ -1,38 +1,43 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
-import '../../utils/fix-map-icon'
+import {SearchContext} from '../../contexts/search.context';
+import '../../utils/fix-map-icon';
+import {SimpleAdEntity} from 'types';
+import {SingleAd} from "./SingleAd";
 
 import './Map.css';
 import 'leaflet/dist/leaflet.css';
 
 export const Map = () => {
+    const {search} = useContext(SearchContext);
+    const [ads, setAds] = useState<SimpleAdEntity[]>([]);
+
+    useEffect(() => {
+        (async () => {
+            const res = await fetch(`http://localhost:3001/ad/search/${search}`);
+            const data = await res.json();
+            setAds(data);
+        })();
+    }, [search]);
 
     return (
-        <>
-            <div className="map">
-                <MapContainer center={[47.3774497,8.5016958]} zoom={13}>
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> & contributors'
-                        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-                    />
-                    <Marker position={[47.3913565, 8.5086224]}>
-                        <Popup>
-                            <h2>Yokoy.ch</h2>
-                            <p> Super IT StartUp</p>
-                        </Popup>
-                    </Marker>
+        <div className="map">
+            <MapContainer center={[47.3774497, 8.5016958]} zoom={13}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> & contributors'
+                    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                />
+                {
+                    ads.map(ad => (
+                        <Marker key={ad.id} position={[ad.lat, ad.lon]}>
+                            <Popup>
+                                <SingleAd id={ad.id}/>
+                            </Popup>
+                        </Marker>
+                    ))
+                }
+            </MapContainer>
+        </div>
 
-
-                    <Marker position={[47.3847999,8.4981451]}>
-                        <Popup>
-                            <h2>Swiss National Museum</h2>
-                            <p> Schweizerisches Nationalmuseum </p>
-                        </Popup>
-                    </Marker>
-
-
-                </MapContainer>
-            </div>
-        </>
     )
 }
