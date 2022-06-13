@@ -1,0 +1,31 @@
+
+
+.add-form h1 {
+    margin: 1.5em 0 1em 0;
+}
+
+.add-form {
+    width: 800px;
+    /*border: 1px solid red;*/
+    margin: 0 auto;
+}
+
+.add-form label {
+    display: block;
+    margin: 0.5em 0 1.5em 0;
+    font-weight: bold;
+}
+.add-form label small {
+    font-weight: normal;
+}
+
+.add-form input, .add-form textarea {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 0.4em;
+    padding: 0.4em;
+}
+
+.add-form button {
+    width: 100%;
+}
