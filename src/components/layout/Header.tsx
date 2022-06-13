@@ -1,4 +1,4 @@
-import React, {FormEventHandler, SyntheticEvent, useContext, useState} from 'react';
+import React, {SyntheticEvent, useContext, useState} from 'react';
 import {SearchContext} from "../../contexts/search.context";
 import {Btn} from "../common/Btn";
 
@@ -18,7 +18,7 @@ export const Header = () => {
             <h1>
                 <strong>Mega</strong> Advertisements
             </h1>
-            <Btn text={'Ad Advertisement'}/>
+            <Btn to="/add" text={'Add Advertisement'}/>
             <form
                 className="search"
                 onSubmit={setStateFromLocalState}
