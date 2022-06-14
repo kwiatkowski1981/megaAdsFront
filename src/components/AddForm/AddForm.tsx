@@ -6,6 +6,7 @@ import './AddForm.css';
 
 export const AddForm = () => {
     const [loading, setLoading] = useState(false);
+    const [id, setId] = useState('');
     const [form, setForm] = useState({
         name: '',
         description: '',
@@ -31,13 +32,11 @@ export const AddForm = () => {
                 }),
             });
             const data = await res.json();
-            console.log(data);
-
+            setId(data.id);
         } finally {
             setLoading(false);
         }
-
-    }
+    };
 
     const updateForm = (key: string, value: any) => {
         setForm(form => ({
@@ -48,6 +47,10 @@ export const AddForm = () => {
 
     if (loading) {
         return <h2>Adding an advertisement is in progress...</h2>
+    }
+
+    if (id) {
+        return <h2>Your advertisement "{form.name}" has been correctly added to the website under the ID: {id}.</h2>;
     }
 
     return (
@@ -120,5 +123,5 @@ export const AddForm = () => {
             </p>
             <Btn text={"Save"}/>
         </form>
-    )
+    );
 }

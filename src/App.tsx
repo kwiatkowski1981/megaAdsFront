@@ -12,7 +12,7 @@ export const App = () => {
             <Header/>
             <Routes>
                 <Route path="/" element={<Map/>}/>
-                <Route path="/add" element={<AddForm/>}/>
+                <Route path="/ad" element={<AddForm/>}/>
             </Routes>
         </SearchContext.Provider>
     );
