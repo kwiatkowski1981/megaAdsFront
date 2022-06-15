@@ -21,7 +21,7 @@ export const Header = () => {
                 <strong>Mega</strong> Advertisements
                 </Link>
             </h1>
-            <Btn to="/ad" text={'Add Advertisement'}/>
+            <Btn to="/attach" text={'Add Advertisement'}/>
             <form
                 className="search"
                 onSubmit={setStateFromLocalState}
