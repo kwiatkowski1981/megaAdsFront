@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1e510d35-fbf4-462f-873b-b219e75adc6c" name="networkmanager">
+        <fileTransfer rootFolder="/home/kubaqomn" accessType="SFTP" host="51.255.17.41" port="22" sshConfigId="46098c2d-0f5c-4132-bd83-837153822191" sshConfig="kubaqomn@51.255.17.41:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
